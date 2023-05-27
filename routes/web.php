@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get( '/' , [ReservationController::class , 'show'])->name('home');
+Route::get( '/create' , [ReservationController::class , 'create'])->name('create.user');
+Route::post('/store' , [ReservationController::class , 'store'])->name('store.user');
+Route::post( '/edit/{id}' , [ReservationController::class , 'edit'])->name('edit.user');
+Route::post('/update/{id}' , [ReservationController::class , 'update'])->name('update.user');
+Route::delete('/delete/{id}' , [ReservationController::class , 'destroy'])->name('delete.user');
